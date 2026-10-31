@@ -1,0 +1,70 @@
+/*Problem: You are given two strings p and q.
+
+You can rearrange the characters of both strings. Determine whether you can rearrange them so that string p becomes string q followed by the word "six".
+
+Print YES if possible, otherwise print NO.
+
+Input:
+- First line contains t, the number of test cases.
+- For each test case:
+  - Two integers n and m, the lengths of strings p and q.
+  - Two strings p and q.
+Output:
+
+For each test case, print YES or NO.*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void check(int n, int m, string p, string q)
+{
+    int freq[26] = {0};
+
+    for(int i = 0; i < n; i++)
+        freq[p[i] - 'a']++;
+
+    for(int i = 0; i < m; i++)
+        freq[q[i] - 'a']--;
+
+    if(freq['s' - 'a'] != 1 ||
+       freq['i' - 'a'] != 1 ||
+       freq['x' - 'a'] != 1)
+    {
+        cout << "NO\n";
+        return;
+    }
+
+    for(int i = 0; i < 26; i++)
+    {
+        if(i != ('s' - 'a') &&
+           i != ('i' - 'a') &&
+           i != ('x' - 'a') &&
+           freq[i] != 0)
+        {
+            cout << "NO\n";
+            return;
+        }
+    }
+
+    cout << "YES\n";
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+
+    while(t--)
+    {
+        int n, m;
+        string p, q;
+
+        cin >> n >> m;
+        cin >> p >> q;
+
+        check(n, m, p, q);
+    }
+
+    return 0;
+}
