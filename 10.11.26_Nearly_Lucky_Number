@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int k;
+char c;
+
+int main() 
+{
+    while (cin >> c) 
+    {
+        k += (c == 52 || c == 55);
+    }
+    cout << (k == 4 || k == 7 ? "YES" : "NO");
+}
