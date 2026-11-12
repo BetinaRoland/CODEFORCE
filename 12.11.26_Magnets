@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, c, p = 0, g = 0;
+    cin >> n;
+    while (n--) {
+        cin >> c;
+        g += (c != p);
+        p = c;
+    }
+    cout << g;
+}
